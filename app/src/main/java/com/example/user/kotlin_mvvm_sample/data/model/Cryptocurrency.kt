@@ -1,4 +1,4 @@
-package com.example.user.kotlin_mvvm_sample.data.source.local
+package com.example.user.kotlin_mvvm_sample.data.model
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
