@@ -4,9 +4,9 @@ import android.app.Application
 
 import android.arch.persistence.room.Room
 import com.example.user.kotlin_mvvm_sample.BuildConfig
-import com.example.user.kotlin_mvvm_sample.data.local.CryptocurrenciesDao
-import com.example.user.kotlin_mvvm_sample.data.local.Database
-import com.example.user.kotlin_mvvm_sample.data.remote.ApiInterface
+import com.example.user.kotlin_mvvm_sample.data.source.local.CryptocurrenciesDao
+import com.example.user.kotlin_mvvm_sample.data.source.local.Database
+import com.example.user.kotlin_mvvm_sample.data.source.remote.ApiInterface
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module

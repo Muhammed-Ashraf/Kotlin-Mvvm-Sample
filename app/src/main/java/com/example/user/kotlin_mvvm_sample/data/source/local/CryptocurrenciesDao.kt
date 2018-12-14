@@ -1,4 +1,4 @@
-package com.example.user.kotlin_mvvm_sample.data.local
+package com.example.user.kotlin_mvvm_sample.data.source.local
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert

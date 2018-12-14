@@ -1,6 +1,6 @@
-package com.example.user.kotlin_mvvm_sample.data.remote
+package com.example.user.kotlin_mvvm_sample.data.source.remote
 
-import com.example.user.kotlin_mvvm_sample.data.local.Cryptocurrency
+import com.example.user.kotlin_mvvm_sample.data.source.local.Cryptocurrency
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
