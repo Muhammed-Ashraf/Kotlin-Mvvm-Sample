@@ -17,6 +17,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+//            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.coinmarketcap.com/v1/\"")
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -57,4 +62,9 @@ dependencies {
     //moshi
     implementation "com.squareup.moshi:moshi-kotlin:${rootProject.ext.moshiKotlinVersion}"
     implementation "com.squareup.moshi:moshi-adapters:${rootProject.ext.moshiKotlinVersion}"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-moshi:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${rootProject.ext.retrofitVersion}"
 }
