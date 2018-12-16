@@ -1,4 +1,4 @@
-package com.example.user.kotlin_mvvm_sample
+package com.example.user.kotlin_mvvm_sample.ui.main
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -8,11 +8,10 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.widget.Toast
+import com.example.user.kotlin_mvvm_sample.R
 import com.example.user.kotlin_mvvm_sample.data.model.Post
 
-import com.example.user.kotlin_mvvm_sample.ui.apicall.ApiCallFragment
-import com.example.user.kotlin_mvvm_sample.ui.main.PostsViewModel
-import com.example.user.kotlin_mvvm_sample.ui.main.PostsViewModelFactory
+import com.example.user.kotlin_mvvm_sample.ui.apicall.PostsListFragment
 import com.example.user.kotlin_mvvm_sample.databinding.MainActivityBinding
 import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
@@ -63,7 +62,7 @@ class PostsActivity : AppCompatActivity(), HasSupportFragmentInjector {
         binding.viewModel = postsViewModel
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, ApiCallFragment.newInstance())
+                .replace(R.id.container, PostsListFragment.newInstance())
                 .commitNow()
         }
     }
