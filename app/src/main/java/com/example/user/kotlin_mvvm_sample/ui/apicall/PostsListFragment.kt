@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.user.kotlin_mvvm_sample.R
 
-class ApiCallFragment : Fragment() {
+class PostsListFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ApiCallFragment()
+        fun newInstance() = PostsListFragment()
     }
 
     private lateinit var viewModel: ApiCallViewModel
@@ -20,7 +20,7 @@ class ApiCallFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.api_call_fragment, container, false)
+        return inflater.inflate(R.layout.post_list_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
