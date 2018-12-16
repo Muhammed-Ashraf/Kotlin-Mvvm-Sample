@@ -6,10 +6,10 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.persistence.room.Room
 import android.content.Context
 import com.example.user.kotlin_mvvm_sample.BuildConfig
-import com.example.user.kotlin_mvvm_sample.data.source.local.CryptocurrenciesDao
+import com.example.user.kotlin_mvvm_sample.data.source.local.PostsDao
 import com.example.user.kotlin_mvvm_sample.data.source.local.Database
 import com.example.user.kotlin_mvvm_sample.data.source.remote.ApiInterface
-import com.example.user.kotlin_mvvm_sample.ui.main.CryptocurrenciesViewModelFactory
+import com.example.user.kotlin_mvvm_sample.ui.main.PostsViewModelFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -35,18 +35,18 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideCryptocurrenciesDatabase(app: Context): Database = Room.databaseBuilder(
+    fun providePostsDatabase(app: Context): Database = Room.databaseBuilder(
         app,
         Database::class.java, "posts_db"
     ).fallbackToDestructiveMigration().build()
 
     @Provides
     @Singleton
-    fun provideCryptocurrenciesDao(database: Database): CryptocurrenciesDao = database.cryptocurrenciesDao()
+    fun provideCryptocurrenciesDao(database: Database): PostsDao = database.postsDao()
 
     @Provides
-    fun provideCryptocurrenciesViewModelFactory(
-        factory: CryptocurrenciesViewModelFactory
+    fun providePostsViewModelFactory(
+        factory: PostsViewModelFactory
     ): ViewModelProvider.Factory = factory
 
     @Provides

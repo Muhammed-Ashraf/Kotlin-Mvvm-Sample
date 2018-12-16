@@ -4,13 +4,13 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import javax.inject.Inject
 
-class CryptocurrenciesViewModelFactory @Inject constructor(
-    private val cryptocurrenciesViewModel: CryptocurrenciesViewModel
+class PostsViewModelFactory @Inject constructor(
+    private val postsViewModel: PostsViewModel
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(CryptocurrenciesViewModel::class.java!!)) {
-            return cryptocurrenciesViewModel as T
+        if (modelClass.isAssignableFrom(PostsViewModel::class.java!!)) {
+            return postsViewModel as T
         }
         throw IllegalArgumentException("Unknown class name")
     }

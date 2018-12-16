@@ -4,21 +4,21 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
-import com.example.user.kotlin_mvvm_sample.data.model.Cryptocurrency
+import com.example.user.kotlin_mvvm_sample.data.model.Post
 
 import io.reactivex.Single
 
 @Dao
-interface CryptocurrenciesDao {
+interface PostsDao {
 
-  @Query("SELECT * FROM cryptocurrencies")
-  fun queryCryptocurrencies(): Single<List<Cryptocurrency>>
+  @Query("SELECT * FROM posts")
+  fun queryPosts(): Single<List<Post>>
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  fun insertCryptocurrency(cryptocurrency: Cryptocurrency)
+  fun insertPost(post: Post)
 
   @Insert(
       onConflict = OnConflictStrategy.REPLACE
   )
-  fun insertAllCryptocurrencies(cryptocurrencies: List<Cryptocurrency>)
+  fun insertAllPosts(posts: List<Post>)
 }

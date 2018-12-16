@@ -1,6 +1,7 @@
 package com.example.user.kotlin_mvvm_sample.data.model
 
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import com.squareup.moshi.Json
 import java.io.Serializable
 
@@ -62,7 +63,7 @@ import java.io.Serializable
 )
 
 data class Post(
-
+    @PrimaryKey
     @Json(name = "userId")
     val userId: String,
 
