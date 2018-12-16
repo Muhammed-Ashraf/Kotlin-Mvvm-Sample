@@ -32,6 +32,8 @@ ext {
     lifecycleVersion = "1.1.1"
     moshiKotlinVersion = "1.8.0"
     retrofitVersion = "2.5.0"
+    rxAndroidVersion = "2.1.0"
+    rxJava2Version = "2.2.4"
 
     //app
     compileSdkVersion = 27
@@ -45,8 +47,7 @@ ext {
 
     moshiConverterVersion = "2.3.0"
     rxJavaAdapterVersion = "2.3.0"
-    rxAndroidVersion = "2.0.2"
-    rxJava2Version = "2.1.0"
+
 
     //test
     junitVersion = "4.12"

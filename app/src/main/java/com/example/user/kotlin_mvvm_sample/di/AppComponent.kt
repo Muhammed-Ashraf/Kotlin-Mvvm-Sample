@@ -18,7 +18,7 @@ import javax.inject.Singleton
 //}
 
 @Singleton
-@Component(modules = [(AndroidSupportInjectionModule::class), (AppModule::class), (ActivityBuilder::class)])
+@Component(modules = [(AndroidSupportInjectionModule::class), (AppModule::class), (ActivityBuilder::class)]) //TODO
 interface AppComponent {
 
     @Component.Builder

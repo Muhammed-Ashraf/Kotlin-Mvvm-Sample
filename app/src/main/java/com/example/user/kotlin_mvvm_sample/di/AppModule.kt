@@ -1,12 +1,15 @@
 package com.example.user.kotlin_mvvm_sample.di
 
 import android.app.Application
+import android.arch.lifecycle.ViewModelProvider
 
 import android.arch.persistence.room.Room
+import android.content.Context
 import com.example.user.kotlin_mvvm_sample.BuildConfig
 import com.example.user.kotlin_mvvm_sample.data.source.local.CryptocurrenciesDao
 import com.example.user.kotlin_mvvm_sample.data.source.local.Database
 import com.example.user.kotlin_mvvm_sample.data.source.remote.ApiInterface
+import com.example.user.kotlin_mvvm_sample.ui.main.CryptocurrenciesViewModelFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -22,20 +25,29 @@ import javax.inject.Singleton
 @Module
 class AppModule {
 
-    @Provides
-    @Singleton
-    internal fun provideApplication(application: Application): Application = application
+//    @Provides
+//    @Singleton
+//    fun provideApplication(): Application = app
 
     @Provides
     @Singleton
-    fun provideCryptocurrenciesDatabase(app: Application): Database = Room.databaseBuilder(
+    internal fun provideContext(application: Application): Context = application
+
+    @Provides
+    @Singleton
+    fun provideCryptocurrenciesDatabase(app: Context): Database = Room.databaseBuilder(
         app,
-        Database::class.java, "cryptocurrencies_db"
-    ).build()
+        Database::class.java, "posts_db"
+    ).fallbackToDestructiveMigration().build()
 
     @Provides
     @Singleton
     fun provideCryptocurrenciesDao(database: Database): CryptocurrenciesDao = database.cryptocurrenciesDao()
+
+    @Provides
+    fun provideCryptocurrenciesViewModelFactory(
+        factory: CryptocurrenciesViewModelFactory
+    ): ViewModelProvider.Factory = factory
 
     @Provides
     @Singleton
@@ -46,7 +58,6 @@ class AppModule {
     fun providesMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
     @Provides
-    @Singleton
     internal fun provideRetrofitInterface(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
@@ -57,7 +68,6 @@ class AppModule {
     }
 
     @Provides
-    @Singleton
     internal fun provideApi(retrofit: Retrofit): ApiInterface {
         return retrofit.create(ApiInterface::class.java)
     }
