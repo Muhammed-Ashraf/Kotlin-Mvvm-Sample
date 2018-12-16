@@ -51,10 +51,10 @@ class PostsActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
             })
 
-        postsViewModel.postsError().observe(this, Observer<String> {
-//            //            hello_world_textview.text = "Hello error $it"
-            Toast.makeText(this, "error", Toast.LENGTH_LONG).show()
-        })
+//        postsViewModel.postsError().observe(this, Observer<String> {
+////            //            hello_world_textview.text = "Hello error $it"
+//            Toast.makeText(this, "error", Toast.LENGTH_LONG).show()
+//        })
 
         postsViewModel.errorMessage.observe(this, Observer { errorMessage ->
             if (errorMessage != null) showError(errorMessage) else hideError()

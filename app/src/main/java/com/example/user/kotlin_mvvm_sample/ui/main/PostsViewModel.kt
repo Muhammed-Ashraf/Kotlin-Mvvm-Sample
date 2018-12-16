@@ -25,7 +25,7 @@ class PostsViewModel @Inject constructor(
     val errorClickListener = View.OnClickListener { loadPosts() }
 
     var postsResult: MutableLiveData<List<Post>> = MutableLiveData()
-    var postsError: MutableLiveData<String> = MutableLiveData()
+//    var postsError: MutableLiveData<String> = MutableLiveData()
 
 
 
@@ -33,9 +33,9 @@ class PostsViewModel @Inject constructor(
         return postsResult
     }
 
-    fun postsError(): LiveData<String> {
-        return postsError
-    }
+//    fun postsError(): LiveData<String> {
+//        return postsError
+//    }
 
     fun loadPosts() {
         compositeDisposable.add(
@@ -54,7 +54,7 @@ class PostsViewModel @Inject constructor(
 
                 }, {
                         err ->
-                    postsError.postValue("Error Fetching Data")
+//                    postsError.postValue("Error Fetching Data")
                     onRetrievePostListError()
                     totalItemsMessage.postValue("Error Fetching data")
                 })
