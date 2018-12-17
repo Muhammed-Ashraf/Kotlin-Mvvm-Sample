@@ -7,7 +7,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBuilder {
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [(PostsActivityModule::class)])
     abstract fun bindMainActivity(): PostsActivity
 
 }

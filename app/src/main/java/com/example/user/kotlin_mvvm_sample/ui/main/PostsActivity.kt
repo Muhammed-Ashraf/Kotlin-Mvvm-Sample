@@ -12,7 +12,7 @@ import com.example.user.kotlin_mvvm_sample.R
 import com.example.user.kotlin_mvvm_sample.data.model.Post
 
 import com.example.user.kotlin_mvvm_sample.ui.apicall.PostsListFragment
-import com.example.user.kotlin_mvvm_sample.databinding.MainActivityBinding
+import com.example.user.kotlin_mvvm_sample.databinding.PostsActivityBinding
 import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -22,7 +22,7 @@ class PostsActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     private var errorSnackbar: Snackbar? = null
 
-    private lateinit var binding: MainActivityBinding
+    private lateinit var binding: PostsActivityBinding
 
     @Inject
     internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
