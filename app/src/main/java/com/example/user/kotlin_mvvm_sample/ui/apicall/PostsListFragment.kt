@@ -16,6 +16,7 @@ import com.example.user.kotlin_mvvm_sample.ui.main.PostsViewModelFactory
 import com.example.user.kotlin_mvvm_sample.databinding.PostListFragmentBinding
 import com.example.user.kotlin_mvvm_sample.ui.main.PostsActivity
 import com.example.user.kotlin_mvvm_sample.ui.main.PostsViewModel
+import com.example.user.kotlin_mvvm_sample.utils.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -24,9 +25,10 @@ class PostsListFragment : Fragment() {
     private lateinit var binding: PostListFragmentBinding
 
     private var postsAdapter: PostsAdapter? = null
-
     @Inject
-    lateinit var postsViewModelFactory: PostsViewModelFactory
+    internal lateinit var viewModelFactory: ViewModelFactory
+//    @Inject
+//    lateinit var postsViewModelFactory: PostsViewModelFactory
     lateinit var postsViewModel: PostsViewModel
 
     companion object {
@@ -54,11 +56,13 @@ class PostsListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        postsViewModel.loadPosts()
-        postsViewModel = ViewModelProviders.of(this, postsViewModelFactory).get(
-            PostsViewModel::class.java
-        )
 
+//        postsViewModel = ViewModelProviders.of(this, postsViewModelFactory).get(
+//            PostsViewModel::class.java
+//        )
+
+        postsViewModel = ViewModelProviders.of(this, viewModelFactory).get(PostsViewModel::class.java!!)
+        postsViewModel.loadPosts()
 
         postsViewModel.postsResult().observe(this,
             Observer<List<Post>> {
@@ -73,8 +77,11 @@ class PostsListFragment : Fragment() {
 //        })
 
         postsViewModel.errorMessage.observe(this, Observer { errorMessage ->
+            if (errorMessage != null)
             Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
         })
+
+        binding.viewModel = postsViewModel
     }
 
     private val postClickCallback = object : PostClickCallback {

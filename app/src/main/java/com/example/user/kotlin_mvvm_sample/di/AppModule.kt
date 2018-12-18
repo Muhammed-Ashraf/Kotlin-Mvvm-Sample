@@ -22,7 +22,8 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
-@Module
+
+@Module(includes = arrayOf(ViewModelModule::class))
 class AppModule {
 
 //    @Provides
@@ -44,10 +45,10 @@ class AppModule {
     @Singleton
     fun provideCryptocurrenciesDao(database: Database): PostsDao = database.postsDao()
 
-    @Provides
-    fun providePostsViewModelFactory(
-        factory: PostsViewModelFactory
-    ): ViewModelProvider.Factory = factory
+//    @Provides
+//    fun providePostsViewModelFactory(
+//        factory: PostsViewModelFactory
+//    ): ViewModelProvider.Factory = factory
 
     @Provides
     @Singleton

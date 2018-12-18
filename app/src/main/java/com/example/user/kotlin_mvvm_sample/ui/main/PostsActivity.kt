@@ -13,6 +13,7 @@ import com.example.user.kotlin_mvvm_sample.data.model.Post
 
 import com.example.user.kotlin_mvvm_sample.ui.apicall.PostsListFragment
 import com.example.user.kotlin_mvvm_sample.databinding.PostsActivityBinding
+import com.example.user.kotlin_mvvm_sample.utils.ViewModelFactory
 import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -26,9 +27,10 @@ class PostsActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     @Inject
     internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
-
     @Inject
-    lateinit var postsViewModelFactory: PostsViewModelFactory
+    internal lateinit var viewModelFactory: ViewModelFactory
+    //    @Inject
+//    lateinit var postsViewModelFactory: PostsViewModelFactory
     lateinit var postsViewModel: PostsViewModel
 
 
@@ -37,18 +39,20 @@ class PostsActivity : AppCompatActivity(), HasSupportFragmentInjector {
         binding = DataBindingUtil.setContentView(this, R.layout.posts_activity)
         AndroidInjection.inject(this)
 
-        postsViewModel = ViewModelProviders.of(this, postsViewModelFactory).get(
-            PostsViewModel::class.java
-        )
+        postsViewModel = ViewModelProviders.of(this, viewModelFactory).get(PostsViewModel::class.java!!)
+
+//        postsViewModel = ViewModelProviders.of(this, postsViewModelFactory).get(
+//            PostsViewModel::class.java
+//        )
 
         postsViewModel.loadPosts()
 
-        postsViewModel.postsResult().observe(this,
-            Observer<List<Post>> {
-                //                hello_world_textview.text = "Hello ${it?.size} cryptocurrencies"
-                Toast.makeText(this, "Hello ${it?.size}", Toast.LENGTH_LONG).show()
-
-            })
+//        postsViewModel.postsResult().observe(this,
+//            Observer<List<Post>> {
+//                //                hello_world_textview.text = "Hello ${it?.size} cryptocurrencies"
+//                Toast.makeText(this, "Hello ${it?.size}", Toast.LENGTH_LONG).show()
+//
+//            })
 
 //        postsViewModel.postsError().observe(this, Observer<String> {
 ////            //            hello_world_textview.text = "Hello error $it"
@@ -67,7 +71,7 @@ class PostsActivity : AppCompatActivity(), HasSupportFragmentInjector {
         }
     }
 
-    private fun showError( errorMessage: String) {
+    private fun showError(errorMessage: String) {
         errorSnackbar = Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_INDEFINITE)
         errorSnackbar?.setAction("Retry", postsViewModel.errorClickListener)
         errorSnackbar?.show()
