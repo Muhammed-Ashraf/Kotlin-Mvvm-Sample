@@ -2,9 +2,9 @@ package com.example.user.kotlin_mvvm_sample.di
 
 import android.app.Application
 import com.example.user.kotlin_mvvm_sample.KotlinMvvmSampleApplication
+import com.example.user.kotlin_mvvm_sample.di.module.AppModule
 import dagger.BindsInstance
 import dagger.Component
-import dagger.android.AndroidInjectionModule
 import dagger.android.support.AndroidSupportInjectionModule
 
 import javax.inject.Singleton

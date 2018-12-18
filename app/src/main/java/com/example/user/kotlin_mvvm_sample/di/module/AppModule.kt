@@ -1,7 +1,6 @@
-package com.example.user.kotlin_mvvm_sample.di
+package com.example.user.kotlin_mvvm_sample.di.module
 
 import android.app.Application
-import android.arch.lifecycle.ViewModelProvider
 
 import android.arch.persistence.room.Room
 import android.content.Context
@@ -9,7 +8,6 @@ import com.example.user.kotlin_mvvm_sample.BuildConfig
 import com.example.user.kotlin_mvvm_sample.data.source.local.PostsDao
 import com.example.user.kotlin_mvvm_sample.data.source.local.Database
 import com.example.user.kotlin_mvvm_sample.data.source.remote.ApiInterface
-import com.example.user.kotlin_mvvm_sample.ui.main.PostsViewModelFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module

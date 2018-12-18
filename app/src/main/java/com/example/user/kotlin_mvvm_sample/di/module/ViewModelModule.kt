@@ -1,4 +1,4 @@
-package com.example.user.kotlin_mvvm_sample.di
+package com.example.user.kotlin_mvvm_sample.di.module
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
