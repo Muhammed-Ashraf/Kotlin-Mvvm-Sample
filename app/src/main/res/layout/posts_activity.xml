@@ -13,6 +13,7 @@
             android:orientation="vertical"
             android:layout_height="match_parent">
         <FrameLayout
+                android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <ProgressBar
@@ -27,6 +28,8 @@
                     android:id="@+id/totalTextView"
                     app:mutableVisibility="@{viewModel.getTotalTextVisibility()}"
                     android:layout_gravity="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="Loading"/>
