@@ -12,14 +12,19 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
+const val SCHEDULER_MAIN_THREAD = "mainThread"
+const val SCHEDULER_IO = "io"
 
 @Module(includes = arrayOf(ViewModelModule::class))
 class AppModule {
@@ -73,4 +78,12 @@ class AppModule {
 
     @Provides
     internal fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()
+
+    @Provides
+    @Named(SCHEDULER_MAIN_THREAD)
+    fun provideAndroidMainThreadScheduler() : Scheduler = AndroidSchedulers.mainThread()
+
+    @Provides
+    @Named(SCHEDULER_IO)
+    fun provideIoScheduler() : Scheduler = Schedulers.io()
 }

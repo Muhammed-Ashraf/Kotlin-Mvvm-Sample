@@ -65,16 +65,18 @@ import java.io.Serializable
 data class Post(
     @PrimaryKey
     @Json(name = "userId")
-    val userId: String,
+    var userId: String,
 
     @Json(name = "id")
-    val id: String,
+    var id: String,
 
     @Json(name = "title")
-    val title: String,
+    var title: String,
 
     @Json(name = "body")
-    val body: String
+    var body: String
 
 
-) : Serializable
+) : Serializable{
+    constructor() : this("", "", "", "")
+}
